@@ -1,0 +1,18 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+langgraph = "*"
+langsmith = "*"
+langchain-anthropic = "*"
+python-dotenv = "*"
+langchain-openai = "*"
+ipython = "*"  # For notebook-style display functionality
+langchain-community = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
