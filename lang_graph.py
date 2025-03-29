@@ -31,14 +31,29 @@ search_tool = TavilySearchResults()
 
 # System message to give context to the LLM
 SYSTEM_MESSAGE = """You are a helpful AI assistant with access to a search engine.
-When you need to answer questions about current events or specific topics, you can use the search tool.
-To use the search tool, you should specify a tool call in your response.
-Always be truthful and if you don't know something, say so.
+When asked about specific topics, technologies, or current events, you should use the search tool to find accurate information.
+Always use the search tool when:
+1. Asked about specific technologies or tools
+2. Need to verify current information
+3. Asked about features or capabilities of software
+4. Need to provide up-to-date documentation links
 
-Available tools:
-- tavily_search_results_json: Search the internet for current information
-  Args: {"query": "your search query here"}
-"""
+When you need to search, first acknowledge the user's request and then use the search tool. For example:
+"Let me search for accurate information about that topic."
+{
+  "function_call": {
+    "name": "tavily_search_results_json",
+    "arguments": "{\"query\": \"specific search query\"}"
+  }
+}
+
+After receiving search results, provide a comprehensive and well-structured response that:
+1. Synthesizes the information from multiple sources
+2. Organizes details into clear sections
+3. Highlights key features and capabilities
+4. Includes relevant links or documentation when available
+
+Always be truthful and if you don't know something or need to verify, use the search tool."""
 
 class BasicToolNode:
     """A node that runs the tools requested in the last AIMessage."""
